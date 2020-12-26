@@ -35,24 +35,24 @@ def home():
 def api_get_all():
     return jsonify(tvShows)
 
-# @app.route('/api/v1/shows', methods=['GET'])
-# def api_id():
-#     # Use ID if provided or display an error for user #http://api.example.com/books?author=Ursula+K.+Le Guin&published=1969&output=xml
-#     if 'id' in request.args:
-#         id = int(request.args['id'])
-#     else:
-#         return "Error: No id field provided. Please specify an id."
+@app.route('/api/v1/shows', methods=['GET'])
+def api_id():
+    # Use ID if provided or display an error for user 
+    if 'id' in request.args:
+        id = int(request.args['id'])
+    else:
+        return "Error: No id field provided. Please specify an id."
 
-#     # Find Show if ID is valid and export as Json
-#     for show in tvShows:
-#         if show['id'] == id:
-#             return jsonify(show)
+    # Find Show if ID is valid and export as Json
+    for show in tvShows:
+        if show['id'] == id:
+            return jsonify(show)
     
-#     return "Error: ID is not Valid!"
+    return "Error: ID is not Valid!"
 
 # @app.route('/api/v1/shows', methods=['GET'])
 # def api_runtime():
-#     # Use ID if provided or display an error for user #http://api.example.com/books?author=Ursula+K.+Le Guin&published=1969&output=xml
+#     # Use runtime if provided or display an error for user
 #     if 'runtime' in request.args:
 #         time = int(request.args['runtime'])
 #     else:
